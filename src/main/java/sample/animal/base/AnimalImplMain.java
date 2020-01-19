@@ -28,6 +28,9 @@ public class AnimalImplMain {
 
         //B3
         dolphinCharacteristics();
+
+        //D1 and 2
+        butterflyTransformation();
     }
 
     /**
@@ -184,6 +187,15 @@ public class AnimalImplMain {
         dolphin.eat();
         dolphin.makeSound();
         dolphin.swim();
+    }
+
+    /**
+     * D. Model a animals that change behavior
+     */
+    private static void butterflyTransformation() {
+        System.out.println("****** Caterpillar transforms to a butterfly *****");
+        Butterfly butterfly = new Butterfly("Butterfly");
+        butterfly.metamorphosis("Butterfly");
     }
 
 }
