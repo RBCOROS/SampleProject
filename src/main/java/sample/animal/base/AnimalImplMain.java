@@ -1,5 +1,6 @@
 package sample.animal.base;
 
+import sample.animal.constants.FishValidationConstant;
 import sample.animal.kind.*;
 import sample.vo.AnimalChars;
 
@@ -21,6 +22,9 @@ public class AnimalImplMain {
 
         //4.
         parrotSound();
+
+        //B-1 and 2
+        fishCharacteristics();
     }
 
     /**
@@ -123,6 +127,49 @@ public class AnimalImplMain {
         parrot.makeSound(cat);
         Rooster rooster = new Rooster("Rooster");
         parrot.makeSound(rooster);
+    }
+
+    /**
+     * B. model fish
+     * Item #1
+     * fish don't sing
+     * fish don't walk
+     * fish can swim
+     * #Item # 3 : fish specialization
+     */
+    private static void fishCharacteristics () {
+        System.out.println("***** B. Model fish *****");
+        Fish fish = new Fish("Fish");
+        fish.eat();
+        fish.makeSound();
+        fish.swim();
+        //validate if fish is a shark or a clownfish
+        System.out.println("Validate fish");
+        animalChars = shark();
+        System.out.println("Given : " + animalChars.toString());
+        String kind = FishValidationConstant.getFishKind(animalChars);
+        System.out.println("kind : " + kind);
+
+        animalChars = clownfish();
+        System.out.println("Given : " + animalChars.toString());
+        kind = FishValidationConstant.getFishKind(animalChars);
+        System.out.println("kind : " + kind);
+    }
+
+    private static AnimalChars shark() {
+        animalChars.setColor("Grey");
+        animalChars.setSize("Large");
+        animalChars.setEatsFish(true);
+        animalChars.setTellsJokes(false);
+        return animalChars;
+    }
+
+    private static AnimalChars clownfish() {
+        animalChars.setColor("Orange");
+        animalChars.setSize("Small");
+        animalChars.setEatsFish(false);
+        animalChars.setTellsJokes(true);
+        return animalChars;
     }
 
 }
