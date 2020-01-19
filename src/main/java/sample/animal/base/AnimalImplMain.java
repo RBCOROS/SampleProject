@@ -18,6 +18,9 @@ public class AnimalImplMain {
 
         //3.
         roosterCharacteristics();
+
+        //4.
+        parrotSound();
     }
 
     /**
@@ -103,6 +106,23 @@ public class AnimalImplMain {
 
         eat(chicken);
         eat(rooster);
+    }
+
+    /**
+     * Item #4
+     * parrot with makes sounds
+     */
+    private static void parrotSound () {
+        System.out.println("***** Parrot that makes sounds depends on the environment! *****");
+        Parrot parrot = new Parrot("Parrot");
+        // parrot who lives with dogs
+        Dog dog = new Dog("Dog");
+        parrot.makeSound(dog);
+        // parrot who lives with cats
+        Cat cat = new Cat("Cat");
+        parrot.makeSound(cat);
+        Rooster rooster = new Rooster("Rooster");
+        parrot.makeSound(rooster);
     }
 
 }
