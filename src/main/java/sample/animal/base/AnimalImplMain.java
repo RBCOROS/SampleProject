@@ -1,8 +1,11 @@
 package sample.animal.base;
 
 import sample.animal.constants.FishValidationConstant;
+import sample.animal.constants.RoosterLangConstants;
 import sample.animal.kind.*;
 import sample.vo.AnimalChars;
+
+import java.util.ArrayList;
 
 
 public class AnimalImplMain {
@@ -31,6 +34,13 @@ public class AnimalImplMain {
 
         //D1 and 2
         butterflyTransformation();
+
+        // E - animal count
+        getAnimalCount();
+
+        // Bonus
+        String roosterSound = getRoosterSoundPerLanguage("Filipino");
+        System.out.println("Returned sound is : " + roosterSound);
     }
 
     /**
@@ -196,6 +206,74 @@ public class AnimalImplMain {
         System.out.println("****** Caterpillar transforms to a butterfly *****");
         Butterfly butterfly = new Butterfly("Butterfly");
         butterfly.metamorphosis("Butterfly");
+    }
+
+    private static void getAnimalCount() {
+        ArrayList<Animal> animals = new ArrayList<Animal>();
+        animals.add(new Cat("Cat"));
+        animals.add(new Dog("Dog"));
+        animals.add(new Bird("Bird"));
+        animals.add(new Chicken("Chicken"));
+        animals.add(new Dolphin("Dolphin"));
+        animals.add(new Duck("Duck"));
+        animals.add(new Fish("Fish"));
+        animals.add(new Parrot("Parrot"));
+        animals.add(new Rooster("Rooster"));
+        animals.add(new Butterfly("Butterfly"));
+
+        int cntFly = 0;
+        int cntWalk = 0;
+        int cntSing = 0;
+        int cntSwim = 0;
+        for (Animal animal : animals) {
+            String kind = animal.getKind();
+
+            if ((animal instanceof Swim)) {
+                cntSwim++;
+                System.out.println("This animal can swim : "+ kind);
+            }
+            if (animal instanceof Walk) {
+                cntWalk++;
+                System.out.println("This animal can walk : "+ kind);
+            }
+            if (animal instanceof Fly) {
+                cntFly++;
+                System.out.println("This animal can fly : " + kind);
+            }
+            if (animal instanceof Sing) {
+                cntSing++;
+                System.out.println("This animal can sing : " + kind);
+            }
+            if (animal instanceof Insect) {
+                if (((Insect) animal).fly()) {
+                    cntFly++;
+                    System.out.println("This insect can fly : " + kind);
+                }
+                if (((Insect) animal).walk()) {
+                    cntWalk++;
+                    System.out.println("This insect can walk : " + kind);
+                }
+            }
+        }
+
+        System.out.println("Total number of animals that can fly : " + cntFly);
+        System.out.println("Total number of animals that can walk : " + cntWalk);
+        System.out.println("Total number of animals that can swim : " + cntSwim);
+        System.out.println("Total number of animals that can sing : " + cntSing);
+
+    }
+
+
+    /**
+     * BONUS part
+     * get the rooster sound depending on the given language
+     * @return
+     */
+    public static String getRoosterSoundPerLanguage(String language) {
+
+        System.out.println("***** Getting the rooster sound for language " + language + " ******");
+        String sound = RoosterLangConstants.getRooseterSoundPerLang(language);
+        return sound;
     }
 
 }
